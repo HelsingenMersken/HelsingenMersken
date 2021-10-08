@@ -71,6 +71,151 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Makefile文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/30/Makefile%E6%96%87%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2021-09-30T10:21:15.000Z" itemprop="datePublished">2021-09-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/30/Makefile%E6%96%87%E4%BB%B6/">Makefile文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目标...:依赖...</span><br><span class="line">    命令</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p><strong>注意为Tab，不得出现空格</strong></p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h2><p>$()</p>
+<h2 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h2><ul>
+<li>= 延迟变量(不调用不改变)</li>
+<li>:= 立即赋值</li>
+<li>?= 空赋值</li>
+<li>+= 追加赋值<h2 id="自动化变量"><a href="#自动化变量" class="headerlink" title="自动化变量"></a>自动化变量</h2></li>
+<li>$&lt; 第一个依赖文件</li>
+<li>$^ 全部的依赖文件</li>
+<li>$@ 目标<h1 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ifeq (var1,var2)</span><br><span class="line">...</span><br><span class="line">else</span><br><span class="line">...</span><br><span class="line">endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ifneq (var1,var2)</span><br><span class="line">...</span><br><span class="line">else</span><br><span class="line">...</span><br><span class="line">endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="模式替换函数patsubst"><a href="#模式替换函数patsubst" class="headerlink" title="模式替换函数patsubst"></a>模式替换函数patsubst</h2>$(patsubst %.c,%.o,x.c.c bar.c) 将“x.c.c bar.c”中以“.c”结尾的单词替换成“.o”<h2 id="取文件名函数notdir"><a href="#取文件名函数notdir" class="headerlink" title="取文件名函数notdir"></a>取文件名函数notdir</h2>$(notdir src/foo.c hacks)取出路径中非目录的部分<h2 id="wildcard-获取匹配模式文件名函数"><a href="#wildcard-获取匹配模式文件名函数" class="headerlink" title="wildcard 获取匹配模式文件名函数"></a>wildcard 获取匹配模式文件名函数</h2>$(wildcard *.c)返回当前目录下所有“.c”源文件列表<h2 id="foreach循环函数"><a href="#foreach循环函数" class="headerlink" title="foreach循环函数"></a>foreach循环函数</h2>$(foreach VAR,LIST,TEXT)LIST中以空格间隔的单词逐个赋值给VAR进行TEXT中的运算</li>
+</ul>
+<h1 id="头文件依赖"><a href="#头文件依赖" class="headerlink" title="头文件依赖"></a>头文件依赖</h1><h1 id="文件描述符和打开模式"><a href="#文件描述符和打开模式" class="headerlink" title="文件描述符和打开模式"></a>文件描述符和打开模式</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int fd;</span><br><span class="line">fd = open(filename,flags,mode);</span><br><span class="line">lseek(fd,offset,whence);</span><br><span class="line">write(fd,buf,write_len);</span><br><span class="line">read(fd,buf,read_len);</span><br><span class="line">close(fd);</span><br></pre></td></tr></table></figure>
+<h2 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h2><p>特殊的索引</p>
+<h2 id="文件打开模式"><a href="#文件打开模式" class="headerlink" title="文件打开模式"></a>文件打开模式</h2><p>主模式</p>
+<ul>
+<li>O_RDONLY:只读模式</li>
+<li>O_WRONLY:只写模式</li>
+<li>O_RDWR:读写模式<br>副模式</li>
+<li>O_CREATE:文件不存在时创建文件</li>
+<li>O_APPEND:追加模式</li>
+<li>O_DIRECT:直接IO模式</li>
+<li>O_SYNC:同步模式</li>
+<li>O_NOBLOCK:非阻塞模式<h1 id="系统IO编程"><a href="#系统IO编程" class="headerlink" title="系统IO编程"></a>系统IO编程</h1></li>
+<li>open</li>
+<li>write</li>
+<li>read</li>
+<li>lseek</li>
+<li>close<h1 id="标准IO编程"><a href="#标准IO编程" class="headerlink" title="标准IO编程"></a>标准IO编程</h1></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://laevatein.tech/2021/09/30/Makefile%E6%96%87%E4%BB%B6/" data-id="ckuhy7a830005dct9bjt27tgd" data-title="Makefile文件" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-树莓派下岗再就业-ZeroTier内网穿透" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/22/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8B%E5%B2%97%E5%86%8D%E5%B0%B1%E4%B8%9A-ZeroTier%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-09-22T12:00:00.000Z" itemprop="datePublished">2021-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/raspberry/">raspberry</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/22/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8B%E5%B2%97%E5%86%8D%E5%B0%B1%E4%B8%9A-ZeroTier%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">树莓派下岗再就业-ZeroTier内网穿透</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><span style="border-bottom:2px dashed red;">需要截图的部分等新图床弄好后再补</span><br>离校后进不了校园内网，但是万一需要的时候就很麻烦，于是我看向了边上的树莓派</p>
+<h1 id="zerotier安装"><a href="#zerotier安装" class="headerlink" title="zerotier安装"></a>zerotier安装</h1><h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p><a target="_blank" rel="noopener" href="https://www.zerotier.com/">https://www.zerotier.com/</a><br>接着新建网络，类型选择PRIVATE</p>
+<h2 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载安装客户端，并右击添加网络，将上一步获得的16位Network ID填入<strong>注意复制的时候不要带换行或空格符号</strong></p>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s https://install.zerotier.com | sudo bash</span><br></pre></td></tr></table></figure>
+<p>加入网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zerotier-cli join Network ID</span><br></pre></td></tr></table></figure>
+<h1 id="配置树莓派的数据转发和路由控制"><a href="#配置树莓派的数据转发和路由控制" class="headerlink" title="配置树莓派的数据转发和路由控制"></a>配置树莓派的数据转发和路由控制</h1><h2 id="查看IP转发设置"><a href="#查看IP转发设置" class="headerlink" title="查看IP转发设置"></a>查看IP转发设置</h2><p>0为关闭</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo sysctl net.ipv4.ip_forward</span><br><span class="line">net.ipv4.ip_forward = 0</span><br></pre></td></tr></table></figure>
+<h2 id="打开内核IP转发"><a href="#打开内核IP转发" class="headerlink" title="打开内核IP转发"></a>打开内核IP转发</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<p>将下列语句去掉注释并修改为1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_forward=1  </span><br></pre></td></tr></table></figure>
+<p>修改完成后CTRL+O并回车保存，CTRL+X退出<br>接下来激活配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
+<p>再次查看IP转发状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl net.ipv4.ip_forward</span><br></pre></td></tr></table></figure>
+<h2 id="查看网卡状态"><a href="#查看网卡状态" class="headerlink" title="查看网卡状态"></a>查看网卡状态</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ifconfig</span><br></pre></td></tr></table></figure>
+<p>可以看到eth0为真实网卡，而————————为zerotire虚拟出来的网口</p>
+<h2 id="使用-iptables-启用-eth0-的网络地址转换和-IP-伪装"><a href="#使用-iptables-启用-eth0-的网络地址转换和-IP-伪装" class="headerlink" title="使用 iptables 启用 eth0 的网络地址转换和 IP 伪装"></a>使用 iptables 启用 eth0 的网络地址转换和 IP 伪装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>允许流量转发和跟踪活动连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>接下来设置从zt7u3fcxwr 到 eth0 流量转发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -A FORWARD -i zt7u3fcxwr -o eth0 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>经过以上设置就完成了配置，但是iptables 规则在重新启动后就无效了，需要保存在配置文件中</p>
+<h2 id="安装-iptables-配置存储工具"><a href="#安装-iptables-配置存储工具" class="headerlink" title="安装 iptables 配置存储工具"></a>安装 iptables 配置存储工具</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install iptables-persistent</span><br></pre></td></tr></table></figure>
+<p>保存 iptables 配置到文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo netfilter-persistent save</span><br></pre></td></tr></table></figure>
+<p>查看 iptables 配置文件内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables-save </span><br></pre></td></tr></table></figure>
+<h1 id="路由设置"><a href="#路由设置" class="headerlink" title="路由设置"></a>路由设置</h1><h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>进入zerotier控制台，将下来到设备可以看到第一步加入的设备，勾选Auth?</p>
+<h2 id="设置路由"><a href="#设置路由" class="headerlink" title="设置路由"></a>设置路由</h2><p>Managed Routes项中添加0.0.0.0/0（全局转发，可根据需求设置）</p>
+<h2 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h2><h3 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h3><p>Allow Default Route勾选转发<br><strong>不用的时候一定记得取消勾选，否则客户端退出后无法正常使用网络</strong></p>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>在设置中勾选转发</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://laevatein.tech/2021/09/22/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8B%E5%B2%97%E5%86%8D%E5%B0%B1%E4%B8%9A-ZeroTier%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" data-id="ckuhy7a8o0014dct9griiei4v" data-title="树莓派下岗再就业-ZeroTier内网穿透" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/06/08/hello-world/" class="article-date">
@@ -110,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/06/08/hello-world/" data-id="ckr0rt797000gpct9dc1zg51p" data-title="Hello World" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2021/06/08/hello-world/" data-id="ckuhy7a8d000idct9d80t9m2k" data-title="Hello World" class="article-share-link">Teilen</a>
       
       
       
@@ -162,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/" data-id="ckr0rt79i000wpct92a9p2qie" data-title="RTS、DTR与一键下载电路" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/" data-id="ckuhy7a8j000sdct9at3mb1qk" data-title="RTS、DTR与一键下载电路" class="article-share-link">Teilen</a>
       
       
       
@@ -216,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/" data-id="ckr0rt79p0015pct995tt639c" data-title="给树莓派添加物理开关机按键" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/" data-id="ckuhy7a8s001adct91oiq4pq2" data-title="给树莓派添加物理开关机按键" class="article-share-link">Teilen</a>
       
       
       
@@ -276,7 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/12/21/raspberry-pi-3bcups%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" data-id="ckr0rt79e000ppct92djggbny" data-title="Raspberry PI 3B+CUPS实现共享打印机" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2020/12/21/raspberry-pi-3bcups%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" data-id="ckuhy7a8i000qdct946dbbkfz" data-title="Raspberry PI 3B+CUPS实现共享打印机" class="article-share-link">Teilen</a>
       
       
       
@@ -324,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/12/04/how-to-get-cookies%EF%BC%9F/" data-id="ckr0rt79d000npct91qntbafh" data-title="how to get cookies？" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2020/12/04/how-to-get-cookies%EF%BC%9F/" data-id="ckuhy7a8c000fdct92ceocchk" data-title="how to get cookies？" class="article-share-link">Teilen</a>
       
       
       
@@ -431,7 +576,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/11/21/cc2530%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="ckr0rt791000apct97wu2e3ng" data-title="CC2530开发环境搭建" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2020/11/21/cc2530%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="ckuhy7a850007dct97sqwf21b" data-title="CC2530开发环境搭建" class="article-share-link">Teilen</a>
       
       
       
@@ -486,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/11/09/2020ti%E6%9D%AF%E7%9C%81%E7%BA%A7%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%E5%8F%8D%E6%80%9D%E3%80%81%E6%80%BB%E7%BB%93/" data-id="ckr0rt7900009pct985xz1k44" data-title="2020\&#34;TI\&#34;杯省级大学生电子设计竞赛反思、总结" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2020/11/09/2020ti%E6%9D%AF%E7%9C%81%E7%BA%A7%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%E5%8F%8D%E6%80%9D%E3%80%81%E6%80%BB%E7%BB%93/" data-id="ckuhy7a7w0001dct99but2ieq" data-title="2020\&#34;TI\&#34;杯省级大学生电子设计竞赛反思、总结" class="article-share-link">Teilen</a>
       
       
       
@@ -554,157 +699,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/10/04/c%E8%AF%AD%E8%A8%80%E4%BD%8D%E7%A7%BB%E3%80%81%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C/" data-id="ckr0rt78n0003pct94q7ia98v" data-title="C语言位移、不同长度赋值操作" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ikbc-c104加灯" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/10/03/ikbc-c104%E5%8A%A0%E7%81%AF/" class="article-date">
-  <time class="dt-published" datetime="2020-10-03T15:39:50.000Z" itemprop="datePublished">2020-10-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/New-World/">New World</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/10/03/ikbc-c104%E5%8A%A0%E7%81%AF/">IKBC C104加灯</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>之前买的机械键盘没带背光，无奈盲打不熟练，晚上码字经常出错，果断决定加灯</p>
-<p>拆开键盘发现C104的PCB上预留了灯位，就是没焊，也没有限流电阻。特么右上角还有四个空轴位，特么不就是F108的阉割版么？接上示波器发现特么居然还有PWM信号输出，买包LED直接焊上就是了</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-10-768x1024.png"></p>
-<p>预留灯位</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-11-768x1024.png"></p>
-<p>PWM驱动信号</p>
-<p>准备材料如下：LED一包(注意正向压降、导通电流)，电池(测试LED)、焊锡、吸锡器、螺丝刀、拔键器、焊锡膏、松香、镊子、斜口钳、烙铁。（其实一半都没用上</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-12-1024x769.png"></p>
-<p>工具全家福</p>
-<p>注意烙铁选功率较大的或者焊台，敷铜板导热快容易让烙铁温度不够。</p>
-<p>拆开，加灯，卡口设计，用卡片撬开。注意焊的时候LED正负极以及引脚短路问题，建议焊一排试一排。</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-13-1024x768.png"></p>
-<p>焊完时</p>
-<p>焊好装回去就是</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-14-1024x768.png"></p>
-<p>装好后效果</p>
-<p>按键控制led</p>
-<p>Fn+1</p>
-<p>全亮</p>
-<p>Fn+2</p>
-<p>贪吃蛇</p>
-<p>Fn+3</p>
-<p>按下按键点亮</p>
-<p>Fn+4</p>
-<p>涟漪</p>
-<p>Fn+5</p>
-<p>两侧律动</p>
-<p>Fn+6</p>
-<p>全键盘呼吸灯</p>
-<p>Fn+7</p>
-<p>高亮Esc Q W E R ↑↓←→</p>
-<p>Fn+8</p>
-<p>高亮部分键</p>
-<p>Fn+↑</p>
-<p>亮度+</p>
-<p>Fn+↓</p>
-<p>亮度-</p>
-<p>Fn+←</p>
-<p>速度+</p>
-<p>Fn+→</p>
-<p>速度-</p>
-<p>按键控制LED</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/10/03/ikbc-c104%E5%8A%A0%E7%81%AF/" data-id="ckr0rt798000ipct9d3uv456h" data-title="IKBC C104加灯" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mlx90614-红外测温模块使用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/10/03/mlx90614-%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time class="dt-published" datetime="2020-10-03T06:52:42.000Z" itemprop="datePublished">2020-10-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/New-World/">New World</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/10/03/mlx90614-%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/">MLX90614 红外测温模块使用（待续</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>非接触式红外测温模块，贵的一批屌照</p>
-<h2 id="管脚定义"><a href="#管脚定义" class="headerlink" title="管脚定义"></a>管脚定义</h2><p><img src="http://192.168.1.104/wp-content/uploads/2020/09/image.png"></p>
-<p>MLX90614管脚定义</p>
-<p>就电源线和IIC一共四根线，接线简单。</p>
-<h2 id="RAM和EEPROM"><a href="#RAM和EEPROM" class="headerlink" title="RAM和EEPROM"></a>RAM和EEPROM</h2><p>32*16bitEEPROM，部分可写入，所有均可读取。0x04可设置物体发射率</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-8.png"></p>
-<p>即物理发射率取值四舍五入后最接近物体的值，默认为1(即0xFFFF).写入时需要先清零再写入</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-7.png"></p>
-<p>32*16bitRAM 部分可读，Ta为环境温度，Tobj1为目标温度，Tobj2在部分型号中不支持，值和Ta一致</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-9.png"></p>
-<h2 id="温度干扰与补偿"><a href="#温度干扰与补偿" class="headerlink" title="温度干扰与补偿"></a>温度干扰与补偿</h2><p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-1.png"></p>
-<p>只有当传感器在热平衡且恒温状态下测得的温度才是准确的，需要注意旁边是否有热源（电路发热、被测物体过近），而我这里使用的MLX90614DCI可以设置内部测量热梯度并补偿测量的温度，降低干扰。(老老实实远离热源</p>
-<p>测温的准确性依赖于VDD，VDD对环境温度和物体温度的典型依赖性为0.6°C / V。</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-5.png"></p>
-<p>Ta对VDD的依赖性（实际To和Ta一致）</p>
-<p>由于出厂时校准时VDD=3V，则为了补偿该误差，我们测量电源电压，并通过应用以下公式补偿结果：</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-4.png"></p>
-<p>测量角度影响测量温度</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-2-1024x653.png"></p>
-<p>几种规格的对应视野角度</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-3-1024x616.png"></p>
-<p>MLX90614DCI对应视野的角度值与灵敏度</p>
-<h2 id="休眠"><a href="#休眠" class="headerlink" title="休眠"></a>休眠</h2><p>可通过设置高低温实现模块的睡眠以节省功耗，计算公式如下</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-6-1024x307.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/10/03/mlx90614-%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/" data-id="ckr0rt79c000lpct96a3zefso" data-title="MLX90614 红外测温模块使用（待续" class="article-share-link">Teilen</a>
+      <a data-url="http://laevatein.tech/2020/10/04/c%E8%AF%AD%E8%A8%80%E4%BD%8D%E7%A7%BB%E3%80%81%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C/" data-id="ckuhy7a860008dct94p6q36xp" data-title="C语言位移、不同长度赋值操作" class="article-share-link">Teilen</a>
       
       
       
@@ -720,7 +715,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -746,7 +741,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -759,6 +754,14 @@
       <ul>
         
           <li>
+            <a href="/2021/09/30/Makefile%E6%96%87%E4%BB%B6/">Makefile文件</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/22/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8B%E5%B2%97%E5%86%8D%E5%B0%B1%E4%B8%9A-ZeroTier%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">树莓派下岗再就业-ZeroTier内网穿透</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/hello-world/">Hello World</a>
           </li>
         
@@ -768,14 +771,6 @@
         
           <li>
             <a href="/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/">给树莓派添加物理开关机按键</a>
-          </li>
-        
-          <li>
-            <a href="/2020/12/21/raspberry-pi-3bcups%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/">Raspberry PI 3B+CUPS实现共享打印机</a>
-          </li>
-        
-          <li>
-            <a href="/2020/12/04/how-to-get-cookies%EF%BC%9F/">how to get cookies？</a>
           </li>
         
       </ul>
