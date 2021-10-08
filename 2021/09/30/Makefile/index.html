@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Makefile文件 | Welcome To HelsingenMersken</title>
+  <title>Makefile | Welcome To HelsingenMersken</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="基本语法123目标...:依赖...    命令    ... 注意为Tab，不得出现空格 变量系统变量$() 自定义变量 &#x3D; 延迟变量(不调用不改变) :&#x3D; 立即赋值 ?&#x3D; 空赋值 +&#x3D; 追加赋值自动化变量 $&lt; 第一个依赖文件 $^ 全部的依赖文件 $@ 目标条件分支123456ifeq (var1,var2)...else...endif 123456ifneq (var1,var2)">
+  <meta name="description" content="基本格式123目标...:依赖...    命令    ... 注意为Tab，不得出现空格 变量系统变量$(变量名) 自定义变量 &#x3D; 延迟变量(不调用不改变) :&#x3D; 立即赋值 ?&#x3D; 空赋值 +&#x3D; 追加赋值自动化变量 $&lt; 第一个依赖文件 $^ 全部的依赖文件，若目标中有重复文件将只保留一份 $@ 目标的集合 $% 当目标为函数库的时候表示规则中的目标成员名。若目标不是函数库文件则值为空 $?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Makefile文件">
-<meta property="og:url" content="http://laevatein.tech/2021/09/30/Makefile%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:title" content="Makefile">
+<meta property="og:url" content="http://laevatein.tech/2021/09/30/Makefile/index.html">
 <meta property="og:site_name" content="Welcome To HelsingenMersken">
-<meta property="og:description" content="基本语法123目标...:依赖...    命令    ... 注意为Tab，不得出现空格 变量系统变量$() 自定义变量 &#x3D; 延迟变量(不调用不改变) :&#x3D; 立即赋值 ?&#x3D; 空赋值 +&#x3D; 追加赋值自动化变量 $&lt; 第一个依赖文件 $^ 全部的依赖文件 $@ 目标条件分支123456ifeq (var1,var2)...else...endif 123456ifneq (var1,var2)">
+<meta property="og:description" content="基本格式123目标...:依赖...    命令    ... 注意为Tab，不得出现空格 变量系统变量$(变量名) 自定义变量 &#x3D; 延迟变量(不调用不改变) :&#x3D; 立即赋值 ?&#x3D; 空赋值 +&#x3D; 追加赋值自动化变量 $&lt; 第一个依赖文件 $^ 全部的依赖文件，若目标中有重复文件将只保留一份 $@ 目标的集合 $% 当目标为函数库的时候表示规则中的目标成员名。若目标不是函数库文件则值为空 $?">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-09-30T10:21:15.000Z">
-<meta property="article:modified_time" content="2021-10-07T15:05:54.000Z">
+<meta property="article:modified_time" content="2021-10-08T13:57:06.000Z">
 <meta property="article:author" content="HelsingenMersken">
 <meta name="twitter:card" content="summary">
   
@@ -61,21 +61,21 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
       </div>
     </div>
   </div>
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Makefile文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Makefile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/09/30/Makefile%E6%96%87%E4%BB%B6/" class="article-date">
+    <a href="/2021/09/30/Makefile/" class="article-date">
   <time class="dt-published" datetime="2021-09-30T10:21:15.000Z" itemprop="datePublished">2021-09-30</time>
 </a>
     
@@ -87,7 +87,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Makefile文件
+      Makefile
     </h1>
   
 
@@ -95,22 +95,30 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目标...:依赖...</span><br><span class="line">    命令</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+        <h1 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目标...:依赖...</span><br><span class="line">    命令</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <p><strong>注意为Tab，不得出现空格</strong></p>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h2><p>$()</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h2><p>$(变量名)</p>
 <h2 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h2><ul>
 <li>= 延迟变量(不调用不改变)</li>
 <li>:= 立即赋值</li>
 <li>?= 空赋值</li>
 <li>+= 追加赋值<h2 id="自动化变量"><a href="#自动化变量" class="headerlink" title="自动化变量"></a>自动化变量</h2></li>
 <li>$&lt; 第一个依赖文件</li>
-<li>$^ 全部的依赖文件</li>
-<li>$@ 目标<h1 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ifeq (var1,var2)</span><br><span class="line">...</span><br><span class="line">else</span><br><span class="line">...</span><br><span class="line">endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li>$^ 全部的依赖文件，若目标中有重复文件将只保留一份</li>
+<li>$@ 目标的集合</li>
+<li>$% 当目标为函数库的时候表示规则中的目标成员名。若目标不是函数库文件则值为空</li>
+<li>$? 所有比目标新的依赖目标集合，以空格隔开</li>
+<li>$* 表示目标模式中”%”及其以前的部分</li>
+<li>$+ $^类似但不主动除去<h1 id="伪目标"><a href="#伪目标" class="headerlink" title="伪目标"></a>伪目标</h1>仅执行命令的目标与目录下存在的文件名冲突时，例如clean<br>声明方式：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.PHONY:clean</span><br></pre></td></tr></table></figure>
+<h1 id="模式规则"><a href="#模式规则" class="headerlink" title="模式规则"></a>模式规则</h1>% 长度任意的非空字符串，当”%”出现在目标时，目标中的”%”决定依赖中的”%”值<h1 id="条件分支"><a href="#条件分支" class="headerlink" title="条件分支"></a>条件分支</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ifeq (var1,var2)</span><br><span class="line">...</span><br><span class="line">else</span><br><span class="line">...</span><br><span class="line">endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ifneq (var1,var2)</span><br><span class="line">...</span><br><span class="line">else</span><br><span class="line">...</span><br><span class="line">endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="模式替换函数patsubst"><a href="#模式替换函数patsubst" class="headerlink" title="模式替换函数patsubst"></a>模式替换函数patsubst</h2>$(patsubst %.c,%.o,x.c.c bar.c) 将“x.c.c bar.c”中以“.c”结尾的单词替换成“.o”<h2 id="取文件名函数notdir"><a href="#取文件名函数notdir" class="headerlink" title="取文件名函数notdir"></a>取文件名函数notdir</h2>$(notdir src/foo.c hacks)取出路径中非目录的部分<h2 id="wildcard-获取匹配模式文件名函数"><a href="#wildcard-获取匹配模式文件名函数" class="headerlink" title="wildcard 获取匹配模式文件名函数"></a>wildcard 获取匹配模式文件名函数</h2>$(wildcard *.c)返回当前目录下所有“.c”源文件列表<h2 id="foreach循环函数"><a href="#foreach循环函数" class="headerlink" title="foreach循环函数"></a>foreach循环函数</h2>$(foreach VAR,LIST,TEXT)LIST中以空格间隔的单词逐个赋值给VAR进行TEXT中的运算</li>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="模式替换函数patsubst"><a href="#模式替换函数patsubst" class="headerlink" title="模式替换函数patsubst"></a>模式替换函数patsubst</h2>$(patsubst %.c,%.o,x.c.c bar.c) 将“x.c.c bar.c”中以“.c”结尾的单词替换成“.o”<h2 id="取文件名函数notdir"><a href="#取文件名函数notdir" class="headerlink" title="取文件名函数notdir"></a>取文件名函数notdir</h2>$(notdir src/foo.c hacks)取出路径中非目录的部分<h2 id="wildcard-获取匹配模式文件名函数"><a href="#wildcard-获取匹配模式文件名函数" class="headerlink" title="wildcard 获取匹配模式文件名函数"></a>wildcard 获取匹配模式文件名函数</h2>$(wildcard *.c)返回当前目录下所有“.c”源文件列表<h2 id="foreach循环函数"><a href="#foreach循环函数" class="headerlink" title="foreach循环函数"></a>foreach循环函数</h2>$(foreach VAR,LIST,TEXT)LIST中以空格间隔的单词逐个赋值给VAR进行TEXT中的运算<div style="display:none">
+# 头文件依赖
+# 文件描述符和打开模式
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int fd;</span><br><span class="line">fd = open(filename,flags,mode);</span><br><span class="line">lseek(fd,offset,whence);</span><br><span class="line">write(fd,buf,write_len);</span><br><span class="line">read(fd,buf,read_len);</span><br><span class="line">close(fd);</span><br></pre></td></tr></table></figure>
+## 文件描述符
+特殊的索引</li>
 </ul>
-<h1 id="头文件依赖"><a href="#头文件依赖" class="headerlink" title="头文件依赖"></a>头文件依赖</h1><h1 id="文件描述符和打开模式"><a href="#文件描述符和打开模式" class="headerlink" title="文件描述符和打开模式"></a>文件描述符和打开模式</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int fd;</span><br><span class="line">fd = open(filename,flags,mode);</span><br><span class="line">lseek(fd,offset,whence);</span><br><span class="line">write(fd,buf,write_len);</span><br><span class="line">read(fd,buf,read_len);</span><br><span class="line">close(fd);</span><br></pre></td></tr></table></figure>
-<h2 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h2><p>特殊的索引</p>
 <h2 id="文件打开模式"><a href="#文件打开模式" class="headerlink" title="文件打开模式"></a>文件打开模式</h2><p>主模式</p>
 <ul>
 <li>O_RDONLY:只读模式</li>
@@ -125,13 +133,13 @@
 <li>write</li>
 <li>read</li>
 <li>lseek</li>
-<li>close<h1 id="标准IO编程"><a href="#标准IO编程" class="headerlink" title="标准IO编程"></a>标准IO编程</h1></li>
+<li>close<h1 id="标准IO编程"><a href="#标准IO编程" class="headerlink" title="标准IO编程"></a>标准IO编程</h1></div></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/09/30/Makefile%E6%96%87%E4%BB%B6/" data-id="ckui2j4ql0005kct932ugep6w" data-title="Makefile文件" class="article-share-link">Share</a>
+      <a data-url="http://laevatein.tech/2021/09/30/Makefile/" data-id="ckuifoxdb0003j0t98uh82gap" data-title="Makefile" class="article-share-link">Compartir</a>
       
       
       
@@ -143,7 +151,7 @@
   
   
     <a href="/2021/09/22/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8B%E5%B2%97%E5%86%8D%E5%B0%B1%E4%B8%9A-ZeroTier%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Viejo</strong>
       <div class="article-nav-title">树莓派下岗再就业-ZeroTier内网穿透</div>
     </a>
   
@@ -159,7 +167,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/New-World/">New World</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/raspberry/">raspberry</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/stm32/">stm32</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83%E5%8D%95%E7%89%87%E6%9C%BA/">其它单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a></li></ul>
     </div>
@@ -174,7 +182,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
@@ -184,12 +192,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2021/09/30/Makefile%E6%96%87%E4%BB%B6/">Makefile文件</a>
+            <a href="/2021/09/30/Makefile/">Makefile</a>
           </li>
         
           <li>
@@ -222,7 +230,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2021 HelsingenMersken<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
