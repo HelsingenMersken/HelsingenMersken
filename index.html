@@ -57,12 +57,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
       </div>
     </div>
   </div>
@@ -70,6 +70,71 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-告别VM虚拟机，使用WSL安装交叉编译器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/13/%E5%91%8A%E5%88%ABVM%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E4%BD%BF%E7%94%A8WSL%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2021-10-13T00:44:01.000Z" itemprop="datePublished">2021-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/13/%E5%91%8A%E5%88%ABVM%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E4%BD%BF%E7%94%A8WSL%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%99%A8/">告别VM虚拟机，使用WSL安装交叉编译器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>学习嵌入式Linux的首先是开发环境安装，在Linux平台上使用交叉编译器编译，但是VM虚拟机体积大，使用起来用户体验很不好，尤其是电脑内存捉急的。有没有可以替代的方法呢？答案是可以使用WSL<br>什么是WSL？适用于 Linux 的 Windows 子系统可让开发人员按原样运行 GNU/Linux 环境 - 包括大多数命令行工具、实用工具和应用程序 - 且不会产生传统虚拟机或双启动设置开销。</p>
+<h1 id="WSL1和WSL2区别"><a href="#WSL1和WSL2区别" class="headerlink" title="WSL1和WSL2区别"></a>WSL1和WSL2区别</h1><p>首先从官方的比较中可以看出除了跨操作系统文件系统的性能外，WSL 2 体系结构在多个方面都比 WSL 1 更具优势。但是假如需要使用的串口或者跨操作系统文件系统的话只能选择WSL1，笔者在这里只用到了wsl进行行编译，其他操作全部windows下解决，所以选择WSL2<br><img src="http://qiniu.laevatein.tech/202110130851702.png"></p>
+<h1 id="安装WSL"><a href="#安装WSL" class="headerlink" title="安装WSL"></a>安装WSL</h1><h2 id="首先需要在电脑BIOS中打开VT"><a href="#首先需要在电脑BIOS中打开VT" class="headerlink" title="首先需要在电脑BIOS中打开VT"></a>首先需要在电脑BIOS中打开VT</h2><p>具体步骤请按电脑品牌百度</p>
+<h2 id="自动安装步骤"><a href="#自动安装步骤" class="headerlink" title="自动安装步骤"></a>自动安装步骤</h2><p>powershell输入以下命令(WIN+X)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --install</span><br></pre></td></tr></table></figure>
+<p>此命令将下载最新的 Linux 内核，将 WSL 2 设置为默认值，并安装 Linux 发行版。步骤简单但是默认安装在C盘，虽然只有几百兆，但某些小伙伴可能有精神洁癖（逃），咱们选手动安装</p>
+<h1 id="WSL手动安装步骤"><a href="#WSL手动安装步骤" class="headerlink" title="WSL手动安装步骤"></a>WSL手动安装步骤</h1><h2 id="启用适用于-Linux-的-Windows-子系统"><a href="#启用适用于-Linux-的-Windows-子系统" class="headerlink" title="启用适用于 Linux 的 Windows 子系统"></a>启用适用于 Linux 的 Windows 子系统</h2><p>以管理员身份打开 PowerShell 并运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br></pre></td></tr></table></figure>
+<p>重启</p>
+<h2 id="启用虚拟机功能"><a href="#启用虚拟机功能" class="headerlink" title="启用虚拟机功能"></a>启用虚拟机功能</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+<h2 id="下载-Linux-内核更新包"><a href="#下载-Linux-内核更新包" class="headerlink" title="下载 Linux 内核更新包"></a>下载 Linux 内核更新包</h2><p><a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">适用于 x64 计算机的 WSL2 Linux 内核更新包</a><br>下完后打开一路下一步</p>
+<h2 id="将-WSL-2-设置为默认版本"><a href="#将-WSL-2-设置为默认版本" class="headerlink" title="将 WSL 2 设置为默认版本"></a>将 WSL 2 设置为默认版本</h2><p>以管理员身份打开 PowerShell 并运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --set-default-version 2</span><br></pre></td></tr></table></figure>
+<h2 id="安装所选的-Linux-分发"><a href="#安装所选的-Linux-分发" class="headerlink" title="安装所选的 Linux 分发"></a>安装所选的 Linux 分发</h2><p>方法一：Microsoft Store商店中搜索需要的Linux版本直接安装，缺点是默认装C盘<br>方法二：手动装，首先下载</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wslubuntu2004">Ubuntu 20.04</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wslubuntu2004arm">Ubuntu 20.04 ARM</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-ubuntu-1804">Ubuntu 18.04</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-ubuntu-1804-arm">Ubuntu 18.04 ARM</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-ubuntu-1604">Ubuntu 16.04</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-debian-gnulinux">Debian GNU/Linux</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-kali-linux-new">Kali Linux</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-sles-12">SUSE Linux Enterprise Server 12</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-SUSELinuxEnterpriseServer15SP2">SUSE Linux Enterprise Server 15 SP2</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/wsl-opensuseleap15-2">openSUSE Leap 15.2</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/WhitewaterFoundry/WSLFedoraRemix/releases/">Fedora Remix for WSL</a><br>下载好后解压.appx格式的包，假设安装在D盘，则直接将其复制到D盘即可，双击文件夹中的exe文件启动linux，首次使用需要设置账户密码。<br><strong>注意：如果需要使用模拟器时需要在“启用或关闭Windows功能”中关闭Linux子系统功能，否则模拟器无法检测到VT</strong><br><img src="http://qiniu.laevatein.tech/202110130922056.png"></li>
+</ul>
+<h1 id="交叉编译器安装"><a href="#交叉编译器安装" class="headerlink" title="交叉编译器安装"></a>交叉编译器安装</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://laevatein.tech/2021/10/13/%E5%91%8A%E5%88%ABVM%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E4%BD%BF%E7%94%A8WSL%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%99%A8/" data-id="ckuotyt3f000zbgt9dvuf6vvt" data-title="告别VM虚拟机，使用WSL安装交叉编译器" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-Makefile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -137,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/09/30/Makefile/" data-id="ckuifoxdb0003j0t98uh82gap" data-title="Makefile" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2021/09/30/Makefile/" data-id="ckuotyt2n0004bgt93gyzae8u" data-title="Makefile" class="article-share-link">Share</a>
       
       
       
@@ -213,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/09/22/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8B%E5%B2%97%E5%86%8D%E5%B0%B1%E4%B8%9A-ZeroTier%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" data-id="ckuifoxe00012j0t93mkp9ueo" data-title="树莓派下岗再就业-ZeroTier内网穿透" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2021/09/22/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8B%E5%B2%97%E5%86%8D%E5%B0%B1%E4%B8%9A-ZeroTier%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" data-id="ckuotyt3g0011bgt9cla1ccv4" data-title="树莓派下岗再就业-ZeroTier内网穿透" class="article-share-link">Share</a>
       
       
       
@@ -264,7 +329,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/06/08/hello-world/" data-id="ckuifoxdj000fj0t9b28f4j5w" data-title="Hello World" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2021/06/08/hello-world/" data-id="ckuotyt30000bbgt91zl7feok" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -316,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/" data-id="ckuifoxdn000nj0t9ahqybo5v" data-title="RTS、DTR与一键下载电路" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/" data-id="ckuotyt37000kbgt9g4ak9z51" data-title="RTS、DTR与一键下载电路" class="article-share-link">Share</a>
       
       
       
@@ -370,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/" data-id="ckuifoxe50018j0t91wv47mwm" data-title="给树莓派添加物理开关机按键" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/" data-id="ckuotyt3t001gbgt9b3gzhmo4" data-title="给树莓派添加物理开关机按键" class="article-share-link">Share</a>
       
       
       
@@ -430,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/12/21/raspberry-pi-3bcups%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" data-id="ckuifoxdm000jj0t92qbn919j" data-title="Raspberry PI 3B+CUPS实现共享打印机" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2020/12/21/raspberry-pi-3bcups%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" data-id="ckuotyt39000nbgt943ldcma4" data-title="Raspberry PI 3B+CUPS实现共享打印机" class="article-share-link">Share</a>
       
       
       
@@ -478,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/12/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8A%93%E5%8F%96cookies/" data-id="ckuifoxe30016j0t96vqr2kka" data-title="浏览器抓取cookies" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2020/12/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8A%93%E5%8F%96cookies/" data-id="ckuotyt3s001fbgt94qy2hqpi" data-title="浏览器抓取cookies" class="article-share-link">Share</a>
       
       
       
@@ -585,7 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/11/21/cc2530%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="ckuifoxdd0005j0t983kh39us" data-title="CC2530开发环境搭建" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2020/11/21/cc2530%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="ckuotyt2u0007bgt9hq3d9zsb" data-title="CC2530开发环境搭建" class="article-share-link">Share</a>
       
       
       
@@ -640,75 +705,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/11/09/2020ti%E6%9D%AF%E7%9C%81%E7%BA%A7%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%E5%8F%8D%E6%80%9D%E3%80%81%E6%80%BB%E7%BB%93/" data-id="ckuifoxd80001j0t93umt0pfi" data-title="2020\&#34;TI\&#34;杯省级大学生电子设计竞赛反思、总结" class="article-share-link">Compartir</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-c语言位移、不同长度赋值操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/10/04/c%E8%AF%AD%E8%A8%80%E4%BD%8D%E7%A7%BB%E3%80%81%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2020-10-03T16:34:51.000Z" itemprop="datePublished">2020-10-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/New-World/">New World</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/10/04/c%E8%AF%AD%E8%A8%80%E4%BD%8D%E7%A7%BB%E3%80%81%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C/">C语言位移、不同长度赋值操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="移位问题"><a href="#移位问题" class="headerlink" title="移位问题"></a>移位问题</h2><p>向下函数传入0x00800000和0x00400000分别返回什么？</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image.png"></p>
-<p>这还用想，当然返回原值了。然而实际却是返回了0xff800000和0x00400000</p>
-<p>为什么0x00800000会返回0xff800000，而0x00400000返回了原值？</p>
-<p>先看程序运行过程，首先temp先左移了八位，变成0x80000000，这是没有问题的，再右移八位后却变成了0xff800000。这是因为c语言对无符号类型数据的移位均为空位补零，但是对于有符号类型的右移却根据最高位决定，最高位为1则补1，反之则补零，所以0x00800000变换为0xff800000，而0x00400000返回原数值，但将数据类型改为无符号时则无此规律。</p>
-<h2 id="不同类型赋值问题"><a href="#不同类型赋值问题" class="headerlink" title="不同类型赋值问题"></a>不同类型赋值问题</h2><p>已知cannle为u32，p_Temp为s32 分析下列赋值过程</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/10/image-15.png"></p>
-<p>首先u32和s32长度等长，区别在于最高位是否有符号位，这种赋值二进制数值不变，但是在打印时候按不同类型解析。</p>
-<p>其次，将长值赋值给短值，截取低位，然后再赋给短值（即丢弃长值中高于短值最高位的所有值）</p>
-<p>其实上述过程只是将int 32类型拆分开存储。发送给上位机后，上位机可将其视为一个int32数据。</p>
-<h2 id="赋值类型补充"><a href="#赋值类型补充" class="headerlink" title="赋值类型补充"></a>赋值类型补充</h2><h3 id="整数与整数之间"><a href="#整数与整数之间" class="headerlink" title="整数与整数之间"></a>整数与整数之间</h3><p>短值赋给长值：</p>
-<p>两个无符号数据</p>
-<p>短整数直接高位补0</p>
-<p>两个有符号类型</p>
-<p>短整数符号拓展</p>
-<p>一个有符号，一个无符号</p>
-<p>短整数先进行位数拓展，过程保持数为不变，然后按长整数的数据类型解析数据</p>
-<h3 id="整数与浮点数之间"><a href="#整数与浮点数之间" class="headerlink" title="整数与浮点数之间"></a>整数与浮点数之间</h3><p>浮点数转整型</p>
-<p>截取整数部分</p>
-<p>整型转浮点型</p>
-<p>小数部分为零，整数部分不变</p>
-<p>double &amp; float</p>
-<p>double-&gt;float</p>
-<p>丢失数据精度</p>
-<p>float-&gt;double</p>
-<p>不丢失精度</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/10/04/c%E8%AF%AD%E8%A8%80%E4%BD%8D%E7%A7%BB%E3%80%81%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E8%B5%8B%E5%80%BC%E6%93%8D%E4%BD%9C/" data-id="ckuifoxdf0007j0t98zfwa8kk" data-title="C语言位移、不同长度赋值操作" class="article-share-link">Compartir</a>
+      <a data-url="http://laevatein.tech/2020/11/09/2020ti%E6%9D%AF%E7%9C%81%E7%BA%A7%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%E5%8F%8D%E6%80%9D%E3%80%81%E6%80%BB%E7%BB%93/" data-id="ckuotyt2f0002bgt9a6e72oko" data-title="2020\&#34;TI\&#34;杯省级大学生电子设计竞赛反思、总结" class="article-share-link">Share</a>
       
       
       
@@ -724,7 +721,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Siguiente &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -733,7 +730,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/New-World/">New World</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/raspberry/">raspberry</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/stm32/">stm32</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83%E5%8D%95%E7%89%87%E6%9C%BA/">其它单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a></li></ul>
     </div>
@@ -748,9 +745,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -758,9 +755,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/10/13/%E5%91%8A%E5%88%ABVM%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E4%BD%BF%E7%94%A8WSL%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%99%A8/">告别VM虚拟机，使用WSL安装交叉编译器</a>
+          </li>
         
           <li>
             <a href="/2021/09/30/Makefile/">Makefile</a>
@@ -778,10 +779,6 @@
             <a href="/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/">RTS、DTR与一键下载电路</a>
           </li>
         
-          <li>
-            <a href="/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/">给树莓派添加物理开关机按键</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -796,7 +793,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2021 HelsingenMersken<br>
-      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
