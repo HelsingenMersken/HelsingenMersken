@@ -13,22 +13,22 @@
 <meta property="og:site_name" content="Welcome To HelsingenMersken">
 <meta property="og:description" content="上一步中获取了遥控器的红外数据，接下来就需要解析了  观察这126组数据，显然72组数据后的数据电平时钟不变，时间也是满的（9637us）。说明该遥控器数据位共72位。 开机位接下来用控制变量法获取数据解析，首先是开关机位。分别获得 制冷 25度 自动风 摆风 下的开关机码。建议将打印出来的数据导入excel分析比较方便。将前后电平时间相减，差值小于100的认为是系统误差，大于的认为是数据差。很明">
 <meta property="og:locale">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-212951.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-213513.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-220516.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-220701.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-02-143341-1024x71.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-02-233614-1024x186.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-012830-1024x95.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-013649-1024x193.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-015108.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-092036-1024x108.jpg">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-04-101944-1024x111.jpg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152328206.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152329814.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152329222.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152329356.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152329625.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152330492.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152330452.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152330932.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152330152.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152330605.jpeg">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152331615.jpeg">
 <meta property="article:published_time" content="2020-08-01T14:26:10.000Z">
-<meta property="article:modified_time" content="2021-06-09T02:22:22.000Z">
+<meta property="article:modified_time" content="2021-10-15T15:31:30.000Z">
 <meta property="article:author" content="HelsingenMersken">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-212951.jpg">
+<meta name="twitter:image" content="http://qiniu.laevatein.tech/202110152328206.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="Welcome To HelsingenMersken" type="application/atom+xml">
   
@@ -75,10 +75,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
       </div>
     </div>
   </div>
@@ -112,40 +112,40 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>上一步中获取了遥控器的红外数据，接下来就需要解析了</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-212951.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152328206.jpeg"></p>
 <p>观察这126组数据，显然72组数据后的数据电平时钟不变，时间也是满的（9637us）。说明该遥控器数据位共72位。</p>
 <h2 id="开机位"><a href="#开机位" class="headerlink" title="开机位"></a>开机位</h2><p>接下来用控制变量法获取数据解析，首先是开关机位。分别获得 制冷 25度 自动风 摆风 下的开关机码。建议将打印出来的数据导入excel分析比较方便。将前后电平时间相减，差值小于100的认为是系统误差，大于的认为是数据差。很明显第9位和65位数据差值大于1000 。二者应该只有一个位控制开关机，剩下一个数据区别应该为检验和区别，正常人都会把校验和放在最后，所以大胆预测第九位控制开关机 ，65位及附近数据为检验位。</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-213513.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152329814.jpeg"></p>
 <h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>上面推算出来了开机位，注意数据格式 大胆猜测 <strong>起始信号</strong>为4100us的高电平和450us左右的低电平组成 数据信号的第二个电平为0 且时间为450us左右 ，而第一个电平为高电平时间为420us或1550us，对应的应该为数据0 和1 （关于这里的推测，联系上面的开机位，正常人都会把开机设为1，关机设为0），这样大致的数据格式推测出来了，可能有错误，继续用控制变量法获取数据分析，有错再改。</p>
 <h2 id="温度控制位"><a href="#温度控制位" class="headerlink" title="温度控制位"></a>温度控制位</h2><p>分别采集 开机 制冷 自动风 摆风 前提下 25度和26度的数据，发现有15 16两位 30 31位 以及65位前后不一样，首先可以肯定的是上面的开关机位推断正确，但是仍然看不出来温度变化规律。</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-220516.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152329222.jpeg"></p>
 <p>25和26对比</p>
 <p>大胆一点，干脆把温度调到最低看，特么的，怎么还是那三处不一样。没办法，只能带进去假设演算了。18度和25度第一个区别就是13 15 16 不一样，将数据按上一步推测的换成0或1，可得18度时为0010，25度为1001. 加减一下可以发现：25-18==7==1001-0010 ；这样规律很可能是 temperature - 18 = n - 0010 将26度的数据带入演算，推断成立。该遥控器支持最大温度为32度，哎，四位数最多到31，需要5bit。大胆再猜下12-16 5bit都是控制温度的，32度时为10000. 控制变量将温度设置为32度，发现上述推断成立。</p>
 <p>注意28-32位数据和温度有关，但是没看出来具体关联，可能是某类校验，先跳过</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-01-220701.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152329356.jpeg"></p>
 <p>18和25度对比</p>
 <h2 id="模式控制位"><a href="#模式控制位" class="headerlink" title="模式控制位"></a>模式控制位</h2><p>直接将上述模式切换为送风模式，发现只有2-16bit 上数据为00001有不同，特么怎么又跑到温控位了？但是18度时为00010，下面确实有一位没用，可能送风模式比较特殊，直接用温控位代替了。</p>
 <p>继续分析其他模式，将模式切换为制热模式，发现这次变的地方太多了，等下再继续分析模式</p>
 <h2 id="风速控制位"><a href="#风速控制位" class="headerlink" title="风速控制位"></a>风速控制位</h2><p>分别获取 自动模式 24 不扫风下的强中低三种风速</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-02-143341-1024x71.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152329625.jpeg"></p>
 <p>发现55 56两位区别，弱风为01 中为10 强风为11 该遥控器还有一个自动风，应该为00，将00带入之前开机位测试的码型中，结论成立。</p>
 <h2 id="摆风控制"><a href="#摆风控制" class="headerlink" title="摆风控制"></a>摆风控制</h2><p>同理可得41位控制摆风</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-02-233614-1024x186.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152330492.jpeg"></p>
 <h2 id="风向控制"><a href="#风向控制" class="headerlink" title="风向控制"></a>风向控制</h2><p>45位为方向控制位，该位使能后摆风失能，导风板切换方向一次</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-012830-1024x95.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152330452.jpeg"></p>
 <h2 id="起始码和地址码"><a href="#起始码和地址码" class="headerlink" title="起始码和地址码"></a>起始码和地址码</h2><p>经过上述分析过程，堆积样本码数量足够多了，仔细观察前九位，数据完全一样。第一位格式较特殊，起始码推断应该没问题。再往后八位：01010101，数据完全一样，推断大概率可能为地址码</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-013649-1024x193.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152330932.jpeg"></p>
 <h2 id="数显控制位"><a href="#数显控制位" class="headerlink" title="数显控制位"></a>数显控制位</h2><p>46-48为数显控制位，000保持当前 111切换状态</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-015108.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152330152.jpeg"></p>
 <h2 id="超静控制位"><a href="#超静控制位" class="headerlink" title="超静控制位"></a>超静控制位</h2><p>62位为超静控制位，1：使能超静模式</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-03-092036-1024x108.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152330605.jpeg"></p>
 <h2 id="定时控制位"><a href="#定时控制位" class="headerlink" title="定时控制位"></a>定时控制位</h2><p>多次采集对比发现 11 36-40 57 58都和时间有关联</p>
 <p>11位较为明显，控制定时功能是否开启，为1时开启</p>
 <p>36-40位控制定时时间，此部分较为特殊，当t&lt;=5h时，该部分值为2t。当t&gt;5 h时，数据为1010+（t-5h）。</p>
 <p>57 58两位控制定时状态 ，具体不清楚</p>
 <p>该功能用不上，定时时间选择太小，还不如用单片机定时器直接定时方便（逃</p>
 <h2 id="模式控制位-1"><a href="#模式控制位-1" class="headerlink" title="模式控制位"></a>模式控制位</h2><p>前面已经分析一半多的码了，继续分析模式，依次切换模式尝试（自动、送风模式下温度无法控制，分析时排出温度位和温度相关位（12-16，28-32））</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/08/%E6%89%B9%E6%B3%A8-2020-08-04-101944-1024x111.jpg"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152331615.jpeg"></p>
 <p>50-52位控制模式，自动(000)-&gt;制冷(001)-&gt;除湿(010)-&gt;送风(011)-&gt;制热(100).</p>
 <p>值得注意的是，此时送风模式下得到的温度值是24(01000),这和之前温度分析不一样？？？然后我去翻了之前保留的数据，发现温度值是24，而不是之前写的00001？？？</p>
 <h2 id="睡眠控制位"><a href="#睡眠控制位" class="headerlink" title="睡眠控制位"></a>睡眠控制位</h2><p>19位为睡眠控制位，为1使能睡眠功能</p>
@@ -154,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/08/01/%E5%88%86%E6%9E%90%E7%A9%BA%E8%B0%83%E9%81%A5%E6%8E%A7%E5%99%A8%E7%BC%96%E7%A0%81/" data-id="ckuowkwma000umst99ej85f0y" data-title="分析空调遥控器编码" class="article-share-link">Share</a>
+      <a data-url="http://laevatein.tech/2020/08/01/%E5%88%86%E6%9E%90%E7%A9%BA%E8%B0%83%E9%81%A5%E6%8E%A7%E5%99%A8%E7%BC%96%E7%A0%81/" data-id="ckusjj4su000u24t9df0vebco" data-title="分析空调遥控器编码" class="article-share-link">Teilen</a>
       
       
       
@@ -165,7 +165,7 @@
 <nav id="article-nav">
   
     <a href="/2020/10/03/mlx90614-%E7%BA%A2%E5%A4%96%E6%B5%8B%E6%B8%A9%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
           MLX90614 红外测温模块使用（待续
@@ -175,7 +175,7 @@
   
   
     <a href="/2020/07/16/esp32%E9%85%8D%E7%BD%AErmt/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">ESP32配置RMT接收功能</div>
     </a>
   
@@ -191,7 +191,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/New-World/">New World</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/raspberry/">raspberry</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/stm32/">stm32</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83%E5%8D%95%E7%89%87%E6%9C%BA/">其它单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a></li></ul>
     </div>
@@ -206,9 +206,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -216,7 +216,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
@@ -233,11 +233,11 @@
           </li>
         
           <li>
-            <a href="/2021/06/08/hello-world/">Hello World</a>
+            <a href="/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/">RTS、DTR与一键下载电路</a>
           </li>
         
           <li>
-            <a href="/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/">RTS、DTR与一键下载电路</a>
+            <a href="/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/">给树莓派添加物理开关机按键</a>
           </li>
         
       </ul>

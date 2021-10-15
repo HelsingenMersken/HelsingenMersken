@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="Welcome To HelsingenMersken">
 <meta property="og:description" content="每次打印东西都要把电脑搬到打印机边上，实在过于麻烦，恰巧手里有块吃灰大半年的树莓派，干脆直接改无线打印机算了 把打印机通过USB线连接Raspberry PI，然后安装CUPS（一定要换国内源，具体参考开箱配置那一篇） sudo apt-get install cups 系统会自动安装相关依赖和打印机驱动，安装完后将用户加到lpadmin 用户组，然后开启 CUPS 的远程访问权限。 12sudo">
 <meta property="og:locale">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/12/image-3.png">
-<meta property="og:image" content="http://192.168.1.104/wp-content/uploads/2020/12/image-4.png">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152319965.png">
+<meta property="og:image" content="http://qiniu.laevatein.tech/202110152319413.png">
 <meta property="article:published_time" content="2020-12-21T13:27:42.000Z">
-<meta property="article:modified_time" content="2021-06-09T02:22:22.000Z">
+<meta property="article:modified_time" content="2021-10-15T15:19:58.000Z">
 <meta property="article:author" content="HelsingenMersken">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://192.168.1.104/wp-content/uploads/2020/12/image-3.png">
+<meta name="twitter:image" content="http://qiniu.laevatein.tech/202110152319965.png">
   
     <link rel="alternate" href="/atom.xml" title="Welcome To HelsingenMersken" type="application/atom+xml">
   
@@ -66,10 +66,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://laevatein.tech"></form>
       </div>
     </div>
   </div>
@@ -114,9 +114,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba</span><br></pre></td></tr></table></figure>
 
 <p>接下来到Windows系统里添加打印机，安装samba后运气好能直接找到，但是大概率是没办法直接找到的，选择我需要的打印机不在列表中</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/12/image-3.png"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152319965.png"></p>
 <p>然后按下图设置（打印机IP:631/printers/Name），注意IP地址和在CUPS中设置的打印机名不要设置错，之后一路下一步，正确选择打印机驱动即可。</p>
-<p><img src="http://192.168.1.104/wp-content/uploads/2020/12/image-4.png"></p>
+<p><img src="http://qiniu.laevatein.tech/202110152319413.png"></p>
 <p>Android中本人测试为Redmi K20，无法打印图片，但是可以通过先转PDF的方式打印（办法总比困难多嘛</p>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://sspai.com/post/40997">如何正确地用树莓派共享打印机</a></p>
@@ -124,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://laevatein.tech/2020/12/21/raspberry-pi-3bcups%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" data-id="ckuowkwm5000lmst97iv9e3pq" data-title="Raspberry PI 3B+CUPS实现共享打印机" class="article-share-link">Share</a>
+      <a data-url="http://laevatein.tech/2020/12/21/raspberry-pi-3bcups%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E6%89%93%E5%8D%B0%E6%9C%BA/" data-id="ckusjj4sp000l24t9065t70r3" data-title="Raspberry PI 3B+CUPS实现共享打印机" class="article-share-link">Teilen</a>
       
       
       
@@ -135,7 +135,7 @@
 <nav id="article-nav">
   
     <a href="/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
           给树莓派添加物理开关机按键
@@ -145,7 +145,7 @@
   
   
     <a href="/2020/12/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8A%93%E5%8F%96cookies/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">浏览器抓取cookies</div>
     </a>
   
@@ -161,7 +161,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/New-World/">New World</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/raspberry/">raspberry</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/stm32/">stm32</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E5%AE%83%E5%8D%95%E7%89%87%E6%9C%BA/">其它单片机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</a></li></ul>
     </div>
@@ -176,9 +176,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -186,7 +186,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
@@ -203,11 +203,11 @@
           </li>
         
           <li>
-            <a href="/2021/06/08/hello-world/">Hello World</a>
+            <a href="/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/">RTS、DTR与一键下载电路</a>
           </li>
         
           <li>
-            <a href="/2021/01/21/rts%E3%80%81dtr%E4%B8%8E%E4%B8%80%E9%94%AE%E4%B8%8B%E8%BD%BD%E7%94%B5%E8%B7%AF/">RTS、DTR与一键下载电路</a>
+            <a href="/2021/01/21/%E7%BB%99%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B7%BB%E5%8A%A0%E7%89%A9%E7%90%86%E5%BC%80%E5%85%B3%E6%9C%BA%E6%8C%89%E9%94%AE/">给树莓派添加物理开关机按键</a>
           </li>
         
       </ul>
